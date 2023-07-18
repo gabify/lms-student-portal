@@ -1,0 +1,44 @@
+/* change background of whole page */
+main{
+    background: url(assets/bg.jpg) center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+/* overlay */
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(149 5 17 / 57%);
+}
+
+.catalog{
+    width: 90vw;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+
+.card-form{
+    margin: 50px 40vh;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.welcome-banner{
+    width: 100%;
+}
+
+.login-form{
+    margin: 140px 40px 0px 40px;
+}
+
+.success{
+    border-color: #09c372;
+}
+
+.error{
+    border-color: #ff3860;
+}
