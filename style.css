@@ -42,3 +42,7 @@ main{
 .error{
     border-color: #ff3860;
 }
+
+.page-link{
+    color: black;
+}

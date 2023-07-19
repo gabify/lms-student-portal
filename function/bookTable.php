@@ -5,15 +5,21 @@
     $pdo = require '../lms-student-portal/configuration/connect.php';
     require '../lms-student-portal/function/data.php';
     $keyword = 'null';
-    $opset = 0;
-    $pages = 10;
+    $book_per_page = 10;
+    $page_num = 1;
     if(isset($_GET['keyword'])){
         $keyword = htmlspecialchars($_GET['keyword']);
     }
-    if(isset($_GET['pages'])){
-        $pages = htmlspecialchars($_GET['pages']);
+    if(isset($_GET['page'])){
+        $page_num = htmlspecialchars($_GET['page']);
     }
-    $books = getBooks($pdo, $opset, $pages, $keyword);
+    $offset = ($page_num - 1) * $book_per_page;
+    $previous_page = $page_num - 1;
+    $next_page = $page_num + 1;
+    $totalBooks = getNumberOfPages($pdo, $keyword);
+    $totalNumberOfPage = ceil($totalBooks/$book_per_page);
+    $secondToLast = $totalNumberOfPage - 1;
+    $books = getBooks($pdo, $offset, $book_per_page, $keyword);
 ?>
 <div class="d-flex justify-content-between mx-2 my-2">
     <div class="d-flex justify-content-evenly">
@@ -67,3 +73,108 @@
         <?php endforeach;?>
     </tbody>
 </table>
+
+<!-- pagination-->
+<div class="d-flex justify-content-between mx-1">
+    <div class="page_info fw-bold">
+        Page <?php echo $page_num. " of ".$totalNumberOfPage;?>
+    </div>
+    <nav aria-label="Book pagination">
+        <ul class="pagination">
+            <!-- Previous Link -->
+            <?php if($page_num == 1):?>
+                <li class="page-item disabled"><a class="page-link">Previous</a></li>
+            <?php else:?>
+                <li class="page-item"><a class="page-link" href="?page=<?php echo $previous_page;?>">Previous</a></li>
+            <?php endif;?>
+            
+            <!-- Page numbers link -->
+            <?php if($totalNumberOfPage <= 10):?>
+                <?php for($counter = 1; $counter <= $totalNumberOfPage; $counter++):?>
+                    <?php if($counter == $page_num):?>
+                        <li class="page-item active"><a class="page-link"><?php echo $counter;?></a></li>
+                    <?php else:?>
+                        <li class="page-item"><a class="page-link" href="?page=<?php echo $counter;?>"><?php echo $counter;?></a></li>
+                    <?php endif;?>
+                <?php endfor;?>
+            <?php elseif($totalNumberOfPage > 10):?>
+                <?php if($page_num <= 4):?>
+                    <?php for($counter = 1; $counter <= 8; $counter++):?>
+                        <?php if($counter == $page_num):?>
+                            <li class="page-item active"><a class="page-link"><?php echo $counter;?></a></li>
+                        <?php else:?>
+                            <li class="page-item"><a class="page-link" href="?page=<?php echo $counter;?>"><?php echo $counter;?></a></li>
+                        <?php endif;?>
+                    <?php endfor;?>
+                    <li class="page-item active">...</li>
+                    <?php if($page_num == $secondToLast):?>
+                        <li class="page-item active"><a class="page-link"><?php echo $secondToLast;?></a></li>
+                    <?php else:?>
+                        <li class="page-item"><a class="page-link" href="?page=<?php echo $secondToLast;?>"><?php echo $secondToLast;?></a></li>
+                    <?php endif;?>
+                    <?php if($page_num == $totalNumberOfPage):?>
+                        <li class="page-item active"><a class="page-link"><?php echo $totalNumberOfPage;?></a></li>
+                    <?php else:?>
+                        <li class="page-item"><a class="page-link" href="?page=<?php echo $totalNumberOfPage;?>"><?php echo $totalNumberOfPage;?></a></li>
+                    <?php endif;?>
+                <?php elseif($page_num > 4 && $page_num < $totalNumberOfPage - 4):?>
+                    <?php if($page_num == 1):?>
+                        <li class="page-item active"><a class="page-link">1</a></li>
+                    <?php else:?>
+                        <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+                    <?php endif;?>
+                    <?php if($page_num == 2):?>
+                        <li class="page-item active"><a class="page-link">2</a></li>
+                    <?php else:?>
+                        <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
+                    <?php endif;?>
+                    <li class="page-item active">...</li>
+                    <?php for($counter = $page_num - 2; $counter <= $page_num + 2; $counter++):?>
+                        <?php if($counter == $page_num):?>
+                            <li class="page-item active"><a class="page-link"><?php echo $counter;?></a></li>
+                        <?php else:?>
+                            <li class="page-item"><a class="page-link" href="?page=<?php echo $counter;?>"><?php echo $counter;?></a></li>
+                        <?php endif;?>
+                    <?php endfor;?>
+                    <li class="page-item active">...</li>
+                    <?php if($page_num == $secondToLast):?>
+                        <li class="page-item active"><a class="page-link"><?php echo $secondToLast;?></a></li>
+                    <?php else:?>
+                        <li class="page-item"><a class="page-link" href="?page=<?php echo $secondToLast;?>"><?php echo $secondToLast;?></a></li>
+                    <?php endif;?>
+                    <?php if($page_num == $totalNumberOfPage):?>
+                        <li class="page-item active"><a class="page-link"><?php echo $totalNumberOfPage;?></a></li>
+                    <?php else:?>
+                        <li class="page-item"><a class="page-link" href="?page=<?php echo $totalNumberOfPage;?>"><?php echo $totalNumberOfPage;?></a></li>
+                    <?php endif;?>
+                <?php else:?>
+                    <?php if($page_num == 1):?>
+                        <li class="page-item active"><a class="page-link">1</a></li>
+                    <?php else:?>
+                        <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+                    <?php endif;?>
+                    <?php if($page_num == 2):?>
+                        <li class="page-item active"><a class="page-link">2</a></li>
+                    <?php else:?>
+                        <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
+                    <?php endif;?>
+                    <li class="page-item active">...</li>
+                    <?php for($counter = $totalNumberOfPage - 6; $counter <= $totalNumberOfPage; $counter++):?>
+                        <?php if($counter == $page_num):?>
+                            <li class="page-item active"><a class="page-link"><?php echo $counter;?></a></li>
+                        <?php else:?>
+                            <li class="page-item"><a class="page-link" href="?page=<?php echo $counter;?>"><?php echo $counter;?></a></li>
+                        <?php endif;?>
+                    <?php endfor;?>
+                <?php endif;?>    
+            <?php endif;?>
+
+            <!-- Next page link -->
+            <?php if($page_num == $totalNumberOfPage):?>
+                <li class="page-item disabled"><a class="page-link">Next</a></li>
+            <?php else:?>
+                <li class="page-item"><a class="page-link" href="?page=<?php echo $next_page;?>">Next</a></li>
+            <?php endif;?>
+        </ul>
+    </nav>
+</div>

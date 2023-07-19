@@ -20,7 +20,7 @@
                 <div class="container-fluid bg-light py-3 pt-4 catalog">
                     <div class="card mb-3">
                         <div class="d-flex justify-content-between px-3 py-2">
-                            <h6 class="display-6">Library Catalog</h6>
+                            <h1 class="display-6">Library Catalog</h1>
                             <div class="px-3 mt-2">
                                 <a href="../lms-student-portal/login.php" class="btn btn-outline-danger mx-1">Log in</a>
                                 <a href="../lms-student-portal/signup.php" class="btn btn-outline-danger mx-1">Sign up</a>
