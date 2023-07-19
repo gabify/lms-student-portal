@@ -64,6 +64,7 @@
                                         <small class="error-message text-danger"></small>
                                     </div>
                                     <span>No account yet? <a href="../lms-student-portal/signup.php">Sign up here.</a></span>
+                                    <span class="d-block">Go back to <a href="../lms-student-portal/index.php">Library catalog.</a></span>
                                     <button class="btn btn-danger fw-lighter d-block mt-5" type="submit" id="btnSubmit" name="submit" disabled>Register</button>
                                 </form>
                             </div>
