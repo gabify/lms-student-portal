@@ -27,48 +27,52 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card my-2 py-3 px-2">
-                        <ul class="nav nav-tabs" id="catalogTab" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button 
-                                    class="nav-link active text-dark" 
-                                    id="book-tab" 
-                                    data-bs-toggle="tab" 
-                                    data-bs-target="#book-tab-pane" 
-                                    type="button" role="tab"
-                                    aria-controls="book-tab-pane" 
-                                    aria-selected="true">
-                                    Books
-                                </button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button 
-                                    class="nav-link text-dark" 
-                                    id="book-tab" 
-                                    data-bs-toggle="tab" 
-                                    data-bs-target="#thesis-tab-pane" 
-                                    type="button" role="tab"
-                                    aria-controls="thesis-tab-pane">
-                                    Theses
-                                </button>
-                            </li>
-                        </ul>
-                        <div class="tab-content my-3" id="catalog-tab-content">
-                            <div 
-                                class="tab-pane fade show active" 
-                                id="book-tab-pane" 
-                                role="tabpanel" 
-                                aria-labelledby="book-tab" 
-                                tabindex="0">
-                                <?php include '../lms-student-portal/function/bookTable.php'?>
-                            </div>
-                            <div 
-                                class="tab-pane fade" 
-                                id="thesis-tab-pane" 
-                                role="tabpanel" 
-                                aria-labelledby="thesis-tab" 
-                                tabindex="0">
-                                <?php include '../lms-student-portal/function/thesisTable.php'?>
+                    <div class="card my-2 mx-2">
+                        <div class="card-header bg-danger">
+                            <ul class="nav nav-tabs card-header-tabs" id="catalogTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button 
+                                        class="nav-link active text-light" 
+                                        id="book-tab" 
+                                        data-bs-toggle="tab" 
+                                        data-bs-target="#book-tab-pane" 
+                                        type="button" role="tab"
+                                        aria-controls="book-tab-pane" 
+                                        aria-selected="true">
+                                        Books
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button 
+                                        class="nav-link text-light" 
+                                        id="book-tab" 
+                                        data-bs-toggle="tab" 
+                                        data-bs-target="#thesis-tab-pane" 
+                                        type="button" role="tab"
+                                        aria-controls="thesis-tab-pane">
+                                        Theses
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <div class="tab-content my-3" id="catalog-tab-content">
+                                <div 
+                                    class="tab-pane fade show active" 
+                                    id="book-tab-pane" 
+                                    role="tabpanel" 
+                                    aria-labelledby="book-tab" 
+                                    tabindex="0">
+                                    <?php include '../lms-student-portal/function/bookTable.php'?>
+                                </div>
+                                <div 
+                                    class="tab-pane fade" 
+                                    id="thesis-tab-pane" 
+                                    role="tabpanel" 
+                                    aria-labelledby="thesis-tab" 
+                                    tabindex="0">
+                                    <?php include '../lms-student-portal/function/thesisTable.php'?>
+                                </div>
                             </div>
                         </div>
                     </div>
