@@ -69,7 +69,7 @@
                                             <select class="form-select" aria-label="Programs" id="program" name="program" required>
                                                 <option selected disabled value="">Choose program..</option>
                                                 <option value="BIT">BIT</option>
-                                                <option value="BTVTED">BTVTED</option>
+                                                <option value="BTVTED">CTE</option>
                                                 <option value="CICS">CICS</option>
                                             </select>
                                             <small class="error-message text-danger"></small>
