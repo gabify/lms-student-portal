@@ -21,16 +21,8 @@
     $secondToLast = $totalNumberOfPage - 1;
     $books = getBooks($pdo, $offset, $book_per_page, $keyword);
 ?>
-<div class="d-flex justify-content-between mx-2 my-2">
-    <div class="d-flex justify-content-evenly">
-        <div class="lead">Show</div>
-        <select name="limit" id="limit" class="form-select mx-1">
-            <option value="10" selected>10</option>
-            <option value="50">50</option>
-            <option value="100">100</option>
-        </select>
-        <div class="lead">Books</div>
-    </div>
+<div class="d-flex justify-content-end mx-2 my-2">
+    
     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="GET">
         <div class="search-box d-flex justify-content-between">
             <input 
@@ -59,12 +51,12 @@
     <tbody>
         <?php foreach($books as $book):?>
             <tr id="<?php echo htmlspecialchars($book['id'])?>">
-                <td><?php echo htmlspecialchars($book['accessnum'])?></td>
+                <td><?php echo htmlspecialchars($book['id'])?></td>
                 <td><?php echo htmlspecialchars($book['callnum'])?></td>
                 <td><?php echo htmlspecialchars($book['title'])?></td>
                 <td>
                     <a 
-                    href="../lms-student-portal/viewBook.php?id=<?php echo htmlspecialchars($book['accessnum'])?>"
+                    href="../lms-student-portal/viewBook.php?id=<?php echo htmlspecialchars($book['id'])?>"
                     class="btn btn-lg">
                         <i class="bi-eye-fill text-danger"></i>
                     </a>
@@ -106,7 +98,7 @@
                             <li class="page-item"><a class="page-link" href="?page=<?php echo $counter;?>&keyword=<?php echo $keyword;?>"><?php echo $counter;?></a></li>
                         <?php endif;?>
                     <?php endfor;?>
-                    <li class="page-item active">...</li>
+                    <li class="page-item"><a class="page-link">.....</a></li>
                     <?php if($page_num == $secondToLast):?>
                         <li class="page-item active"><a class="page-link"><?php echo $secondToLast;?></a></li>
                     <?php else:?>
@@ -128,7 +120,7 @@
                     <?php else:?>
                         <li class="page-item"><a class="page-link" href="?page=2&keyword=<?php echo $keyword;?>">2</a></li>
                     <?php endif;?>
-                    <li class="page-item active">...</li>
+                    <li class="page-item"><a class="page-link">.....</a></li>
                     <?php for($counter = $page_num - 2; $counter <= $page_num + 2; $counter++):?>
                         <?php if($counter == $page_num):?>
                             <li class="page-item active"><a class="page-link"><?php echo $counter;?></a></li>
@@ -136,7 +128,7 @@
                             <li class="page-item"><a class="page-link" href="?page=<?php echo $counter;?>&keyword=<?php echo $keyword;?>"><?php echo $counter;?></a></li>
                         <?php endif;?>
                     <?php endfor;?>
-                    <li class="page-item active">...</li>
+                    <li class="page-item active"></li>
                     <?php if($page_num == $secondToLast):?>
                         <li class="page-item active"><a class="page-link"><?php echo $secondToLast;?></a></li>
                     <?php else:?>
@@ -158,7 +150,7 @@
                     <?php else:?>
                         <li class="page-item"><a class="page-link" href="?page=2&keyword=<?php echo $keyword;?>">2</a></li>
                     <?php endif;?>
-                    <li class="page-item active">...</li>
+                    <li class="page-item"><a class="page-link">.....</a></li>
                     <?php for($counter = $totalNumberOfPage - 6; $counter <= $totalNumberOfPage; $counter++):?>
                         <?php if($counter == $page_num):?>
                             <li class="page-item active"><a class="page-link"><?php echo $counter;?></a></li>

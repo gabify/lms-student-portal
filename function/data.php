@@ -1,13 +1,48 @@
 <?php
     function getBooks($pdo, $offset, $pages, $keyword){
-        $keyword = '%'.$keyword.'%';
-        $stmt = $pdo->prepare('CALL getAllBooks(:opset, :pages, :keyword)');
-        $stmt->bindParam(':opset', $offset, PDO::PARAM_INT);
-        $stmt->bindParam(':pages', $pages, PDO::PARAM_INT);
-        $stmt->bindParam(':keyword', $keyword, PDO::PARAM_STR);
-        $stmt->execute();
-        $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $books;
+        if($keyword == 'null'){
+            $stmt = $pdo->prepare("SELECT books.id,
+            books.callnum,
+            books.title,
+            books.status
+            FROM books
+            WHERE books.is_deleted = 0
+            LIMIT :opset, :pages");
+            $stmt->bindParam(':opset', $offset, PDO::PARAM_INT);
+            $stmt->bindParam(':pages', $pages, PDO::PARAM_INT);
+            $stmt->execute();
+            $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+            if($books){
+                return $books;
+            }else{
+                return 'Some error occurred';
+            }
+        }else{
+            $keyword = '%'.$keyword.'%';
+            $stmt = $pdo->prepare("SELECT books.id,
+            books.callnum,
+            books.title,
+            books.status
+            FROM books
+            WHERE books.callnum LIKE :keyword
+            OR books.title LIKE :keyword
+            OR books.author LIKE :keyword
+            OR books.publisher LIKE :keyword
+            AND books.is_deleted = 0
+            LIMIT :opset, :pages");
+            $stmt->bindParam(':opset', $offset, PDO::PARAM_INT);
+            $stmt->bindParam(':pages', $pages, PDO::PARAM_INT);
+            $stmt->bindParam(':keyword', $keyword, PDO::PARAM_STR);
+            $stmt->execute();
+            $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            if($books){
+                return $books;
+            }else{
+                return 'Some error occurred';
+            }
+        }
     }
 
     function getNumberOfPages($pdo, $keyword){
@@ -18,17 +53,11 @@
         }else{
             $keyword = '%'.$keyword.'%';
             $stmt = $pdo->prepare("SELECT COUNT(*) AS totalPages FROM books
-            LEFT JOIN book_data
-            ON books.book_Info_id = book_data.id
-            LEFT JOIN author
-            ON book_data.author_id = author.id
-            LEFT JOIN publisher
-            ON book_data.publisher_id = publisher.id
-            WHERE book_data.callnum LIKE :keyword
-            OR book_data.title LIKE :keyword
-            OR author.author_name LIKE :keyword
-            OR publisher.publisher_name LIKE :keyword
-            AND books.is_deleted = 0");
+            WHERE callnum LIKE :keyword
+            OR title LIKE :keyword
+            OR author LIKE :keyword
+            OR publisher LIKE :keyword
+            AND is_deleted = 0");
             $stmt->bindParam(':keyword', $keyword, PDO::PARAM_STR);
             $stmt->execute();
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
