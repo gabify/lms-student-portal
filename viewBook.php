@@ -30,6 +30,9 @@
             <div class="overlay">
                 <div class="container-fluid bg-light py-3 pt-4 catalog">
                     <?php if($book):?>
+                        <div class="d-flex justify-content-end me-4">
+                            <a href="index.php">Go back</a>
+                        </div>
                         <div class="card p-2 m-4">
                             <div class="card-body">
                                 <h3 class="card-title text-center">
