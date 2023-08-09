@@ -2,6 +2,8 @@
     if(!isset($_SESSION)){
         session_start();
     }
+    $pdo = require '../lms-student-portal/configuration/connect.php';
+    require '../lms-student-portal/function/data.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
