@@ -55,10 +55,10 @@
                             <img src="../lms-student-portal/assets/welcome.svg" alt="welcome" class="welcome-banner">
                         </div>
                         <div class="col-6">
-                            <div class="form py-3 pt-5 px-4 mb-3">
+                            <div class="form py-3 pt-5 px-4 mb-2">
                                 <h5 class="display-6 fw-bold text-danger mb-5">Sign up Form</h5>
                                 <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post" id="signupform" novalidate>
-                                    <div class="d-flex justify-content-between mb-3">
+                                    <div class="d-flex justify-content-evenly mb-3">
                                         <div class="me-1">
                                             <label for="srcode" class="form-label fw-bold text-secondary">Srcode</label>
                                             <input type="text" class="form-control" id="srcode" name="srcode" placeholder="ex. 12-34567" required>
@@ -74,6 +74,11 @@
                                             </select>
                                             <small class="error-message text-danger"></small>
                                         </div>
+                                    </div>
+                                    <div class="mb-2">
+                                        <label for="course" class="form-label fw-bold text-secondary">Course</label>
+                                        <input type="text" class="form-control" id="course" name="course" placeholder="ex. Computer Technology" required>
+                                        <small class="error-message text-danger"></small>
                                     </div>
                                     <div class="mb-3">
                                         <label for="firstname" class="form-label fw-bold text-secondary">First Name</label>

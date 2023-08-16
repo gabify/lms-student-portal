@@ -3,6 +3,7 @@ const srcode = document.querySelector('#srcode')
 const firstname = document.querySelector('#firstname')
 const lastname = document.querySelector('#lastname')
 const program = document.querySelector('#program')
+const course = document.querySelector('#course')
 const btnSubmit = document.querySelector('#btnSubmit')
 
 srcode.addEventListener('input', e =>{
@@ -32,7 +33,7 @@ srcode.addEventListener('input', e =>{
 })
 
 form.addEventListener('submit', e=>{
-    if(validateInputs().length != 3){
+    if(validateInputs().length != 4){
         e.preventDefault()
         e.stopPropagation()
     }   
@@ -42,6 +43,7 @@ const validateInputs = () => {
     const firstnameValue = firstname.value.trim()
     const lastnameValue = lastname.value.trim()
     const programValue = program.value.trim()
+    const courseVal = course.value.trim()
     let inputs = [];
 
     if(isEmpty(firstnameValue)){
@@ -63,6 +65,11 @@ const validateInputs = () => {
     }else{
         setSuccess(program)
         inputs.push(programValue)
+    }
+    if(isEmpty(courseVal)){
+        setError(course, 'Please provide a course.')
+    }else{
+        setSuccess(course);
     }
     return inputs
 }
