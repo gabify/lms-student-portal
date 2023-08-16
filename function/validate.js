@@ -70,6 +70,7 @@ const validateInputs = () => {
         setError(course, 'Please provide a course.')
     }else{
         setSuccess(course);
+        inputs.push(courseVal);
     }
     return inputs
 }

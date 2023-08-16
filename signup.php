@@ -12,6 +12,7 @@
         $student['program'] = trim(htmlspecialchars($_POST['program']));
         $student['firstname'] = trim(htmlspecialchars($_POST['firstname']));
         $student['lastname'] = trim(htmlspecialchars($_POST['lastname']));
+        $student['course'] = trim(htmlspecialchars($_POST['course']));
         
         $result = createStudent($pdo, $student);
         if($result == 'success'){
