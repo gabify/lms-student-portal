@@ -66,9 +66,9 @@
                                             <small class="error-message text-danger"></small>
                                         </div>
                                         <div class="ms-1">
-                                            <label for="program" class="form-label fw-bold text-secondary">Program</label>
+                                            <label for="program" class="form-label fw-bold text-secondary">College</label>
                                             <select class="form-select" aria-label="Programs" id="program" name="program" required>
-                                                <option selected disabled value="">Choose program..</option>
+                                                <option selected disabled value="">Choose college..</option>
                                                 <option value="CIT">CIT</option>
                                                 <option value="CTE">CTE</option>
                                                 <option value="CICS">CICS</option>
