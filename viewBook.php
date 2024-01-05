@@ -28,12 +28,12 @@
     <body>
         <main>
             <div class="overlay">
-                <div class="container-fluid bg-light py-3 pt-4 catalog">
+                <div class="container-fluid py-3 pt-4 catalog w-75" style="background-color: #f7f1e3;">
                     <?php if($book):?>
                         <div class="d-flex justify-content-end me-4">
-                            <a href="index.php">Go back</a>
+                            <a href="index.php" class="btn btn-danger">Go back</a>
                         </div>
-                        <div class="card p-2 m-4">
+                        <div class="card p-2 m-4" style="background-color: #f7f1e3;">
                             <div class="card-body">
                                 <h3 class="card-title text-center">
                                     Book Information 
@@ -118,7 +118,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card p-2 m-4">
+                        <div class="card p-2 m-4" style="background-color: #f7f1e3;">
                             <div class="card-body">
                                 <h3 class="card-title text-center">Book Preview</h3>
                                 <p class="text-center mt-5 fs-5">No preview to show</p>
