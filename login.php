@@ -29,6 +29,13 @@
             $_SESSION['text'] = $result;
         }
     }
+    function getAnnouncement($pdo){
+        $stmt= $pdo->query("SELECT title, body FROM announcement WHERE id= 1");
+        $announcement = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $announcement;
+    }
+
+    $announcement = getAnnouncement($pdo);
 ?>
 
 <!DOCTYPE html>
@@ -48,9 +55,8 @@
                         <div class="col-6 bg-danger px-4">
                             <div class="info py-3 pt-5 px-4 mb-2">
                                 <h5 class="display-6 fw-bold text-light mb-5">Information</h5>
-                                <p class="text-light fw-lighter">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet leo eget elit euismod lacinia vel sit amet ex.
-                                Sed eleifend urna a porta dictum. Suspendisse nunc quam, molestie eget dui dictum, dapibus blandit arcu. Sed suscipit vehicula aliquet. ed lacus nunc, euismod eu nibh quis, pellentesque ultrices enim. Nunc nec tortor sit amet nunc iaculis sollicitudin.
-                            </p>
+                                <p class="text-light fw-bold mb-1"><?php echo $announcement['title']?></p>
+                                <p class="text-light fw-lighter"><?php echo $announcement['body']?></p>
                             </div>
                             <img src="../lms-student-portal/assets/books.svg" alt="welcome" class="welcome-banner img-fluid mb-2">
                         </div>
