@@ -19,17 +19,17 @@
     <body>
         <main>
             <div class="overlay">
-                <div class="container-fluid bg-light py-3 pt-4 catalog">
-                    <div class="card mb-3">
+                <div class="container-fluid py-3 px-4 py-5 catalog w-75" style="background-color: #f7f1e3;">
+                    <div class="card mb-3 border border-dark-subtle" style="background-color: #f7f1e3;">
                         <div class="d-flex justify-content-between px-3 py-2">
                             <h1 class="display-6">Library Catalog</h1>
                             <div class="px-3 mt-2">
-                                <a href="../lms-student-portal/login.php" class="btn btn-outline-danger mx-1">Log in</a>
-                                <a href="../lms-student-portal/signup.php" class="btn btn-outline-danger mx-1">Sign up</a>
+                                <a href="../lms-student-portal/login.php" class="btn btn-danger mx-1">Log in</a>
+                                <a href="../lms-student-portal/signup.php" class="btn btn-danger mx-1">Sign up</a>
                             </div>
                         </div>
                     </div>
-                    <div class="card my-2 mx-2">
+                    <div class="card my-2 mx-2" style="background-color: #f7f1e3;">
                         <div class="card-header bg-danger">
                             <ul class="nav nav-tabs card-header-tabs" id="catalogTab" role="tablist">
                                 <li class="nav-item" role="presentation">

@@ -46,3 +46,13 @@ main{
 .page-link{
     color: black;
 }
+
+.nav-tabs .nav-item .nav-link {
+    background-color: #dc3545;
+    color: #FFF;
+  }
+  
+  .nav-tabs .nav-item .nav-link.active {
+    background-color: #f7f1e3;
+    color: #242323;
+  }
